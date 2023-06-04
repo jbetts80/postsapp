@@ -3,7 +3,7 @@
 Posts App
 
 ## Running the app
-- Install the dependencies
+- First, install the dependencies
 ```shell
 flutter pub get
 ```
@@ -13,7 +13,7 @@ flutter pub get
 dart run build_runner build --delete-conflicting-outputs
 ```
 
-Finally, run the app
+- Finally, run the app
 ```shell
 flutter run
 ```
