@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:postsapp/core/presentation/theme/color_palette.dart';
-import 'package:postsapp/features/home/screens/home_screen.dart';
+import 'package:postsapp/features/home/presentation/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
