@@ -83,8 +83,7 @@ class _UsersBody extends StatelessWidget {
               builder: (_, state) {
                 if (state.status == Status.loading) {
                   return const AppShimmerList();
-                }
-                if (state.filteredUsers.isEmpty) {
+                } else if (state.filteredUsers.isEmpty) {
                   return Center(child: Text('List is empty'.hardcoded, style: AppTextStyle.large));
                 }
                 return Expanded(
