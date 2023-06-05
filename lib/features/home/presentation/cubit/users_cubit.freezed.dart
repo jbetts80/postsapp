@@ -16,68 +16,51 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UsersState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
+  List<User> get filteredUsers => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
+    required TResult Function(bool isLoading, List<User> users,
+            List<User> filteredUsers, String errorMessage)
         usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
+    TResult? Function(bool isLoading, List<User> users,
+            List<User> filteredUsers, String errorMessage)?
+        usersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
+    TResult Function(bool isLoading, List<User> users, List<User> filteredUsers,
+            String errorMessage)?
+        usersLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
+    required TResult Function(_UsersState value) usersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
+    TResult? Function(_UsersState value)? usersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
+    TResult Function(_UsersState value)? usersLoaded,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UsersStateCopyWith<UsersState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -86,6 +69,12 @@ abstract class $UsersStateCopyWith<$Res> {
   factory $UsersStateCopyWith(
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<User> users,
+      List<User> filteredUsers,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -97,283 +86,72 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? users = null,
+    Object? filteredUsers = null,
+    Object? errorMessage = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      filteredUsers: null == filteredUsers
+          ? _value.filteredUsers
+          : filteredUsers // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
+abstract class _$$_UsersStateCopyWith<$Res>
+    implements $UsersStateCopyWith<$Res> {
+  factory _$$_UsersStateCopyWith(
+          _$_UsersState value, $Res Function(_$_UsersState) then) =
+      __$$_UsersStateCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'UsersState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
-        usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements UsersState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$Loading implements Loading {
-  const _$Loading();
-
-  @override
-  String toString() {
-    return 'UsersState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
-        usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements UsersState {
-  const factory Loading() = _$Loading;
-}
-
-/// @nodoc
-abstract class _$$UsersLoadedCopyWith<$Res> {
-  factory _$$UsersLoadedCopyWith(
-          _$UsersLoaded value, $Res Function(_$UsersLoaded) then) =
-      __$$UsersLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<User> users, List<User> filteredUsers});
+  $Res call(
+      {bool isLoading,
+      List<User> users,
+      List<User> filteredUsers,
+      String errorMessage});
 }
 
 /// @nodoc
-class __$$UsersLoadedCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$UsersLoaded>
-    implements _$$UsersLoadedCopyWith<$Res> {
-  __$$UsersLoadedCopyWithImpl(
-      _$UsersLoaded _value, $Res Function(_$UsersLoaded) _then)
+class __$$_UsersStateCopyWithImpl<$Res>
+    extends _$UsersStateCopyWithImpl<$Res, _$_UsersState>
+    implements _$$_UsersStateCopyWith<$Res> {
+  __$$_UsersStateCopyWithImpl(
+      _$_UsersState _value, $Res Function(_$_UsersState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? users = null,
     Object? filteredUsers = null,
+    Object? errorMessage = null,
   }) {
-    return _then(_$UsersLoaded(
+    return _then(_$_UsersState(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -382,19 +160,28 @@ class __$$UsersLoadedCopyWithImpl<$Res>
           ? _value._filteredUsers
           : filteredUsers // ignore: cast_nullable_to_non_nullable
               as List<User>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UsersLoaded implements UsersLoaded {
-  const _$UsersLoaded(
-      {final List<User> users = const [],
-      final List<User> filteredUsers = const []})
+class _$_UsersState implements _UsersState {
+  const _$_UsersState(
+      {this.isLoading = true,
+      final List<User> users = const [],
+      final List<User> filteredUsers = const [],
+      this.errorMessage = ''})
       : _users = users,
         _filteredUsers = filteredUsers;
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   final List<User> _users;
   @override
   @JsonKey()
@@ -414,72 +201,72 @@ class _$UsersLoaded implements UsersLoaded {
   }
 
   @override
+  @JsonKey()
+  final String errorMessage;
+
+  @override
   String toString() {
-    return 'UsersState.usersLoaded(users: $users, filteredUsers: $filteredUsers)';
+    return 'UsersState.usersLoaded(isLoading: $isLoading, users: $users, filteredUsers: $filteredUsers, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UsersLoaded &&
+            other is _$_UsersState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._users, _users) &&
             const DeepCollectionEquality()
-                .equals(other._filteredUsers, _filteredUsers));
+                .equals(other._filteredUsers, _filteredUsers) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      isLoading,
       const DeepCollectionEquality().hash(_users),
-      const DeepCollectionEquality().hash(_filteredUsers));
+      const DeepCollectionEquality().hash(_filteredUsers),
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UsersLoadedCopyWith<_$UsersLoaded> get copyWith =>
-      __$$UsersLoadedCopyWithImpl<_$UsersLoaded>(this, _$identity);
+  _$$_UsersStateCopyWith<_$_UsersState> get copyWith =>
+      __$$_UsersStateCopyWithImpl<_$_UsersState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
+    required TResult Function(bool isLoading, List<User> users,
+            List<User> filteredUsers, String errorMessage)
         usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
   }) {
-    return usersLoaded(users, filteredUsers);
+    return usersLoaded(isLoading, users, filteredUsers, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
+    TResult? Function(bool isLoading, List<User> users,
+            List<User> filteredUsers, String errorMessage)?
+        usersLoaded,
   }) {
-    return usersLoaded?.call(users, filteredUsers);
+    return usersLoaded?.call(isLoading, users, filteredUsers, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
+    TResult Function(bool isLoading, List<User> users, List<User> filteredUsers,
+            String errorMessage)?
+        usersLoaded,
     required TResult orElse(),
   }) {
     if (usersLoaded != null) {
-      return usersLoaded(users, filteredUsers);
+      return usersLoaded(isLoading, users, filteredUsers, errorMessage);
     }
     return orElse();
   }
@@ -487,12 +274,7 @@ class _$UsersLoaded implements UsersLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
+    required TResult Function(_UsersState value) usersLoaded,
   }) {
     return usersLoaded(this);
   }
@@ -500,12 +282,7 @@ class _$UsersLoaded implements UsersLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
+    TResult? Function(_UsersState value)? usersLoaded,
   }) {
     return usersLoaded?.call(this);
   }
@@ -513,12 +290,7 @@ class _$UsersLoaded implements UsersLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
+    TResult Function(_UsersState value)? usersLoaded,
     required TResult orElse(),
   }) {
     if (usersLoaded != null) {
@@ -528,423 +300,23 @@ class _$UsersLoaded implements UsersLoaded {
   }
 }
 
-abstract class UsersLoaded implements UsersState {
-  const factory UsersLoaded(
-      {final List<User> users, final List<User> filteredUsers}) = _$UsersLoaded;
+abstract class _UsersState implements UsersState {
+  const factory _UsersState(
+      {final bool isLoading,
+      final List<User> users,
+      final List<User> filteredUsers,
+      final String errorMessage}) = _$_UsersState;
 
+  @override
+  bool get isLoading;
+  @override
   List<User> get users;
+  @override
   List<User> get filteredUsers;
+  @override
+  String get errorMessage;
+  @override
   @JsonKey(ignore: true)
-  _$$UsersLoadedCopyWith<_$UsersLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EmptyUsersFilteredCopyWith<$Res> {
-  factory _$$EmptyUsersFilteredCopyWith(_$EmptyUsersFiltered value,
-          $Res Function(_$EmptyUsersFiltered) then) =
-      __$$EmptyUsersFilteredCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$EmptyUsersFilteredCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$EmptyUsersFiltered>
-    implements _$$EmptyUsersFilteredCopyWith<$Res> {
-  __$$EmptyUsersFilteredCopyWithImpl(
-      _$EmptyUsersFiltered _value, $Res Function(_$EmptyUsersFiltered) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$EmptyUsersFiltered implements EmptyUsersFiltered {
-  const _$EmptyUsersFiltered();
-
-  @override
-  String toString() {
-    return 'UsersState.emptyUsersFiltered()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyUsersFiltered);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
-        usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
-  }) {
-    return emptyUsersFiltered();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
-  }) {
-    return emptyUsersFiltered?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
-    required TResult orElse(),
-  }) {
-    if (emptyUsersFiltered != null) {
-      return emptyUsersFiltered();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
-  }) {
-    return emptyUsersFiltered(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
-  }) {
-    return emptyUsersFiltered?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (emptyUsersFiltered != null) {
-      return emptyUsersFiltered(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class EmptyUsersFiltered implements UsersState {
-  const factory EmptyUsersFiltered() = _$EmptyUsersFiltered;
-}
-
-/// @nodoc
-abstract class _$$UserPostsLoadedCopyWith<$Res> {
-  factory _$$UserPostsLoadedCopyWith(
-          _$UserPostsLoaded value, $Res Function(_$UserPostsLoaded) then) =
-      __$$UserPostsLoadedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UserPostsLoadedCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$UserPostsLoaded>
-    implements _$$UserPostsLoadedCopyWith<$Res> {
-  __$$UserPostsLoadedCopyWithImpl(
-      _$UserPostsLoaded _value, $Res Function(_$UserPostsLoaded) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$UserPostsLoaded implements UserPostsLoaded {
-  const _$UserPostsLoaded();
-
-  @override
-  String toString() {
-    return 'UsersState.userPostsLoaded()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserPostsLoaded);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
-        usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
-  }) {
-    return userPostsLoaded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
-  }) {
-    return userPostsLoaded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
-    required TResult orElse(),
-  }) {
-    if (userPostsLoaded != null) {
-      return userPostsLoaded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
-  }) {
-    return userPostsLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
-  }) {
-    return userPostsLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (userPostsLoaded != null) {
-      return userPostsLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UserPostsLoaded implements UsersState {
-  const factory UserPostsLoaded() = _$UserPostsLoaded;
-}
-
-/// @nodoc
-abstract class _$$FailedCopyWith<$Res> {
-  factory _$$FailedCopyWith(_$Failed value, $Res Function(_$Failed) then) =
-      __$$FailedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$FailedCopyWithImpl<$Res>
-    extends _$UsersStateCopyWithImpl<$Res, _$Failed>
-    implements _$$FailedCopyWith<$Res> {
-  __$$FailedCopyWithImpl(_$Failed _value, $Res Function(_$Failed) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$Failed(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$Failed implements Failed {
-  const _$Failed(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'UsersState.failed(message: $message)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Failed &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailedCopyWith<_$Failed> get copyWith =>
-      __$$FailedCopyWithImpl<_$Failed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<User> users, List<User> filteredUsers)
-        usersLoaded,
-    required TResult Function() emptyUsersFiltered,
-    required TResult Function() userPostsLoaded,
-    required TResult Function(String message) failed,
-  }) {
-    return failed(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult? Function()? emptyUsersFiltered,
-    TResult? Function()? userPostsLoaded,
-    TResult? Function(String message)? failed,
-  }) {
-    return failed?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<User> users, List<User> filteredUsers)? usersLoaded,
-    TResult Function()? emptyUsersFiltered,
-    TResult Function()? userPostsLoaded,
-    TResult Function(String message)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(UsersLoaded value) usersLoaded,
-    required TResult Function(EmptyUsersFiltered value) emptyUsersFiltered,
-    required TResult Function(UserPostsLoaded value) userPostsLoaded,
-    required TResult Function(Failed value) failed,
-  }) {
-    return failed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(UsersLoaded value)? usersLoaded,
-    TResult? Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult? Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult? Function(Failed value)? failed,
-  }) {
-    return failed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(UsersLoaded value)? usersLoaded,
-    TResult Function(EmptyUsersFiltered value)? emptyUsersFiltered,
-    TResult Function(UserPostsLoaded value)? userPostsLoaded,
-    TResult Function(Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Failed implements UsersState {
-  const factory Failed(final String message) = _$Failed;
-
-  String get message;
-  @JsonKey(ignore: true)
-  _$$FailedCopyWith<_$Failed> get copyWith =>
+  _$$_UsersStateCopyWith<_$_UsersState> get copyWith =>
       throw _privateConstructorUsedError;
 }

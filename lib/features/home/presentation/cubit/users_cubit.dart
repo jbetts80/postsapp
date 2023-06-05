@@ -8,30 +8,24 @@ part 'users_cubit.freezed.dart';
 part 'users_state.dart';
 
 class UsersCubit extends Cubit<UsersState> {
-  UsersCubit(this._userRepository) : super(const UsersState.initial());
+  UsersCubit(this._userRepository) : super(UsersState.initial());
   final UserRepository _userRepository;
 
   Future<void> fetchUsers() async {
     try {
-      emit(const UsersState.loading());
       final users = await _userRepository.fetchUsers();
-      emit(UsersState.usersLoaded(users: users, filteredUsers: users));
+      emit(state.copyWith(isLoading: false, users: users, filteredUsers: users));
     } catch (exception) {
-      emit(UsersState.failed('Error when fetching the users'.hardcoded));
+      emit(state.copyWith(isLoading: false, errorMessage: 'Error when fetching the users'.hardcoded));
     }
   }
 
-  void filterUsers(String query, List<User> currentUsers) {
+  void filterUsers(String query) {
     try {
-      emit(const UsersState.loading());
-      final filteredUsers = currentUsers.where((user) => user.name.toLowerCase().contains(query.toLowerCase())).toList();
-      if (filteredUsers.isEmpty) {
-        emit(const UsersState.emptyUsersFiltered());
-      } else {
-        emit(UsersState.usersLoaded(users: currentUsers, filteredUsers: filteredUsers));
-      }
+      final filteredUsers = state.users.where((user) => user.name.toLowerCase().contains(query.toLowerCase())).toList();
+      emit(state.copyWith(isLoading: false, filteredUsers: filteredUsers));
     } catch (exception) {
-      emit(UsersState.failed('Error when filtering the users'.hardcoded));
+      emit(state.copyWith(isLoading: false, errorMessage: 'Error when filtering the users'.hardcoded));
     }
   }
 }
