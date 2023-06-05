@@ -11,11 +11,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:postsapp/core/utils/api.dart' as _i5;
+import 'package:postsapp/core/services/api_impl.dart' as _i4;
 import 'package:postsapp/features/home/data/repositories/user_repository_impl.dart'
-    as _i4;
+    as _i6;
 import 'package:postsapp/features/home/domain/repositories/user_repository.dart'
-    as _i3;
+    as _i5;
+import 'package:postsapp/features/home/domain/services/api.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -28,7 +29,8 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i3.UserRepository>(() => _i4.UserRepositoryImpl(gh<_i5.Api>()));
+    gh.factory<_i3.Api>(() => _i4.ApiImpl());
+    gh.factory<_i5.UserRepository>(() => _i6.UserRepositoryImpl(gh<_i3.Api>()));
     return this;
   }
 }
