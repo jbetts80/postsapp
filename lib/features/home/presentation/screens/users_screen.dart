@@ -48,42 +48,56 @@ class _UsersBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-      child: BlocConsumer<UsersCubit, UsersState>(
-        listener: (_, state) => SnackBar(
-          content: Text(state.errorMessage, style: AppTextStyle.small.copyWith(color: ColorPalette.white)),
-          backgroundColor: ColorPalette.red,
-        ),
-        builder: (_, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: edgeInsetsH4,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Buscar usuario'.hardcoded, style: AppTextStyle.tiny.copyWith(color: ColorPalette.green)),
-                    AppTextField(
-                      controller: nameControler,
-                      onChanged: context.read<UsersCubit>().filterUsers,
-                    ),
-                  ],
-                ),
+      child: BlocListener<UsersCubit, UsersState>(
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (_, state) {
+          switch (state.status) {
+            case Status.loading:
+            case Status.success:
+              break;
+            case Status.error:
+              SnackBar(
+                content: Text(state.errorMessage, style: AppTextStyle.small.copyWith(color: ColorPalette.white)),
+                backgroundColor: ColorPalette.red,
+              );
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: edgeInsetsH4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Buscar usuario'.hardcoded, style: AppTextStyle.tiny.copyWith(color: ColorPalette.green)),
+                  AppTextField(
+                    controller: nameControler,
+                    onChanged: context.read<UsersCubit>().filterUsers,
+                  ),
+                ],
               ),
-              vSpace30,
-              if (state.isLoading)
-                const AppShimmerList()
-              else
-                Expanded(
+            ),
+            vSpace30,
+            BlocBuilder<UsersCubit, UsersState>(
+              builder: (_, state) {
+                if (state.status == Status.loading) {
+                  return const AppShimmerList();
+                }
+                if (state.filteredUsers.isEmpty) {
+                  return Center(child: Text('List is empty'.hardcoded, style: AppTextStyle.large));
+                }
+                return Expanded(
                   child: ListView.separated(
                     itemBuilder: (_, index) => AppUserCard(user: state.filteredUsers[index], showPost: (_) {}),
                     itemCount: state.filteredUsers.length,
                     separatorBuilder: (_, __) => vSpace30,
                   ),
-                ),
-            ],
-          );
-        },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

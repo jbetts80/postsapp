@@ -1,12 +1,14 @@
 part of 'users_cubit.dart';
 
+enum Status { loading, success, error }
+
 @freezed
 class UsersState with _$UsersState {
-  const factory UsersState.usersLoaded({
-    @Default(true) bool isLoading,
+  const factory UsersState({
     @Default([]) List<User> users,
     @Default([]) List<User> filteredUsers,
     @Default('') String errorMessage,
+    @Default(Status.loading) Status status,
   }) = _UsersState;
   factory UsersState.initial() => const _UsersState();
 }

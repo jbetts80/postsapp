@@ -16,48 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UsersState {
-  bool get isLoading => throw _privateConstructorUsedError;
   List<User> get users => throw _privateConstructorUsedError;
   List<User> get filteredUsers => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, List<User> users,
-            List<User> filteredUsers, String errorMessage)
-        usersLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, List<User> users,
-            List<User> filteredUsers, String errorMessage)?
-        usersLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, List<User> users, List<User> filteredUsers,
-            String errorMessage)?
-        usersLoaded,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UsersState value) usersLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UsersState value)? usersLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UsersState value)? usersLoaded,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  Status get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UsersStateCopyWith<UsersState> get copyWith =>
@@ -71,10 +33,10 @@ abstract class $UsersStateCopyWith<$Res> {
       _$UsersStateCopyWithImpl<$Res, UsersState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      List<User> users,
+      {List<User> users,
       List<User> filteredUsers,
-      String errorMessage});
+      String errorMessage,
+      Status status});
 }
 
 /// @nodoc
@@ -90,16 +52,12 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? users = null,
     Object? filteredUsers = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -112,6 +70,10 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
     ) as $Val);
   }
 }
@@ -125,10 +87,10 @@ abstract class _$$_UsersStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      List<User> users,
+      {List<User> users,
       List<User> filteredUsers,
-      String errorMessage});
+      String errorMessage,
+      Status status});
 }
 
 /// @nodoc
@@ -142,16 +104,12 @@ class __$$_UsersStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? users = null,
     Object? filteredUsers = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_$_UsersState(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -164,6 +122,10 @@ class __$$_UsersStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
     ));
   }
 }
@@ -172,16 +134,13 @@ class __$$_UsersStateCopyWithImpl<$Res>
 
 class _$_UsersState implements _UsersState {
   const _$_UsersState(
-      {this.isLoading = true,
-      final List<User> users = const [],
+      {final List<User> users = const [],
       final List<User> filteredUsers = const [],
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.status = Status.loading})
       : _users = users,
         _filteredUsers = filteredUsers;
 
-  @override
-  @JsonKey()
-  final bool isLoading;
   final List<User> _users;
   @override
   @JsonKey()
@@ -203,10 +162,13 @@ class _$_UsersState implements _UsersState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final Status status;
 
   @override
   String toString() {
-    return 'UsersState.usersLoaded(isLoading: $isLoading, users: $users, filteredUsers: $filteredUsers, errorMessage: $errorMessage)';
+    return 'UsersState(users: $users, filteredUsers: $filteredUsers, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -214,107 +176,44 @@ class _$_UsersState implements _UsersState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UsersState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._users, _users) &&
             const DeepCollectionEquality()
                 .equals(other._filteredUsers, _filteredUsers) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      isLoading,
       const DeepCollectionEquality().hash(_users),
       const DeepCollectionEquality().hash(_filteredUsers),
-      errorMessage);
+      errorMessage,
+      status);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_UsersStateCopyWith<_$_UsersState> get copyWith =>
       __$$_UsersStateCopyWithImpl<_$_UsersState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading, List<User> users,
-            List<User> filteredUsers, String errorMessage)
-        usersLoaded,
-  }) {
-    return usersLoaded(isLoading, users, filteredUsers, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading, List<User> users,
-            List<User> filteredUsers, String errorMessage)?
-        usersLoaded,
-  }) {
-    return usersLoaded?.call(isLoading, users, filteredUsers, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading, List<User> users, List<User> filteredUsers,
-            String errorMessage)?
-        usersLoaded,
-    required TResult orElse(),
-  }) {
-    if (usersLoaded != null) {
-      return usersLoaded(isLoading, users, filteredUsers, errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UsersState value) usersLoaded,
-  }) {
-    return usersLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UsersState value)? usersLoaded,
-  }) {
-    return usersLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UsersState value)? usersLoaded,
-    required TResult orElse(),
-  }) {
-    if (usersLoaded != null) {
-      return usersLoaded(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _UsersState implements UsersState {
   const factory _UsersState(
-      {final bool isLoading,
-      final List<User> users,
+      {final List<User> users,
       final List<User> filteredUsers,
-      final String errorMessage}) = _$_UsersState;
+      final String errorMessage,
+      final Status status}) = _$_UsersState;
 
-  @override
-  bool get isLoading;
   @override
   List<User> get users;
   @override
   List<User> get filteredUsers;
   @override
   String get errorMessage;
+  @override
+  Status get status;
   @override
   @JsonKey(ignore: true)
   _$$_UsersStateCopyWith<_$_UsersState> get copyWith =>

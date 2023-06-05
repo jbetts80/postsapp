@@ -8,7 +8,6 @@ abstract class AppTextStyle {
     letterSpacing: 0,
   );
 
-  /// Display medium Text Style
   static TextStyle get tiny => _baseTextStyle.copyWith(fontSize: 14);
 
   static TextStyle get small => _baseTextStyle.copyWith(fontSize: 16);

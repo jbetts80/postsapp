@@ -14,18 +14,18 @@ class UsersCubit extends Cubit<UsersState> {
   Future<void> fetchUsers() async {
     try {
       final users = await _userRepository.fetchUsers();
-      emit(state.copyWith(isLoading: false, users: users, filteredUsers: users));
+      emit(state.copyWith(status: Status.success, users: users, filteredUsers: users));
     } catch (exception) {
-      emit(state.copyWith(isLoading: false, errorMessage: 'Error when fetching the users'.hardcoded));
+      emit(state.copyWith(status: Status.error, errorMessage: 'Error when fetching the users'.hardcoded));
     }
   }
 
   void filterUsers(String query) {
     try {
       final filteredUsers = state.users.where((user) => user.name.toLowerCase().contains(query.toLowerCase())).toList();
-      emit(state.copyWith(isLoading: false, filteredUsers: filteredUsers));
+      emit(state.copyWith(status: Status.success, filteredUsers: filteredUsers));
     } catch (exception) {
-      emit(state.copyWith(isLoading: false, errorMessage: 'Error when filtering the users'.hardcoded));
+      emit(state.copyWith(status: Status.error, errorMessage: 'Error when filtering the users'.hardcoded));
     }
   }
 }
