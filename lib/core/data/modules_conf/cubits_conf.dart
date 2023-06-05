@@ -4,5 +4,5 @@ import 'package:postsapp/features/home/presentation/cubit/users_cubit.dart';
 
 abstract class CubitsConf {
   @lazySingleton
-  UsersCubit get authenticationCubit => UsersCubit(GetIt.I.get());
+  UsersCubit get authenticationCubit => UsersCubit(GetIt.I.get(), GetIt.I.get());
 }

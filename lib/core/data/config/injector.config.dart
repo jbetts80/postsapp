@@ -12,10 +12,14 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:postsapp/core/services/api_impl.dart' as _i4;
-import 'package:postsapp/features/home/data/repositories/user_repository_impl.dart'
+import 'package:postsapp/features/home/data/repositories/local_storage_repository_impl.dart'
     as _i6;
-import 'package:postsapp/features/home/domain/repositories/user_repository.dart'
+import 'package:postsapp/features/home/data/repositories/user_repository_impl.dart'
+    as _i8;
+import 'package:postsapp/features/home/domain/repositories/local_storage_repository.dart'
     as _i5;
+import 'package:postsapp/features/home/domain/repositories/user_repository.dart'
+    as _i7;
 import 'package:postsapp/features/home/domain/services/api.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -30,7 +34,9 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     gh.factory<_i3.Api>(() => _i4.ApiImpl());
-    gh.factory<_i5.UserRepository>(() => _i6.UserRepositoryImpl(gh<_i3.Api>()));
+    gh.factory<_i5.LocalStorageRepository>(
+        () => _i6.LocalStorageRepositoryImpl());
+    gh.factory<_i7.UserRepository>(() => _i8.UserRepositoryImpl(gh<_i3.Api>()));
     return this;
   }
 }

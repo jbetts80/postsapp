@@ -24,10 +24,8 @@ mixin _$User {
   String get name => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  Address get address => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get website => throw _privateConstructorUsedError;
-  Company get company => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,13 +42,8 @@ abstract class $UserCopyWith<$Res> {
       String name,
       String username,
       String email,
-      Address address,
       String phone,
-      String website,
-      Company company});
-
-  $AddressCopyWith<$Res> get address;
-  $CompanyCopyWith<$Res> get company;
+      String website});
 }
 
 /// @nodoc
@@ -70,10 +63,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? name = null,
     Object? username = null,
     Object? email = null,
-    Object? address = null,
     Object? phone = null,
     Object? website = null,
-    Object? company = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,10 +83,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -104,27 +91,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String,
-      company: null == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as Company,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res> get address {
-    return $AddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CompanyCopyWith<$Res> get company {
-    return $CompanyCopyWith<$Res>(_value.company, (value) {
-      return _then(_value.copyWith(company: value) as $Val);
-    });
   }
 }
 
@@ -139,15 +106,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String name,
       String username,
       String email,
-      Address address,
       String phone,
-      String website,
-      Company company});
-
-  @override
-  $AddressCopyWith<$Res> get address;
-  @override
-  $CompanyCopyWith<$Res> get company;
+      String website});
 }
 
 /// @nodoc
@@ -163,10 +123,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? name = null,
     Object? username = null,
     Object? email = null,
-    Object? address = null,
     Object? phone = null,
     Object? website = null,
-    Object? company = null,
   }) {
     return _then(_$_User(
       id: null == id
@@ -185,10 +143,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -197,10 +151,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String,
-      company: null == company
-          ? _value.company
-          : company // ignore: cast_nullable_to_non_nullable
-              as Company,
     ));
   }
 }
@@ -213,10 +163,8 @@ class _$_User implements _User {
       required this.name,
       required this.username,
       required this.email,
-      required this.address,
       required this.phone,
-      required this.website,
-      required this.company});
+      required this.website});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -229,17 +177,13 @@ class _$_User implements _User {
   @override
   final String email;
   @override
-  final Address address;
-  @override
   final String phone;
   @override
   final String website;
-  @override
-  final Company company;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, username: $username, email: $email, address: $address, phone: $phone, website: $website, company: $company)';
+    return 'User(id: $id, name: $name, username: $username, email: $email, phone: $phone, website: $website)';
   }
 
   @override
@@ -252,16 +196,14 @@ class _$_User implements _User {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.address, address) || other.address == address) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.website, website) || other.website == website) &&
-            (identical(other.company, company) || other.company == company));
+            (identical(other.website, website) || other.website == website));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, username, email, address, phone, website, company);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, username, email, phone, website);
 
   @JsonKey(ignore: true)
   @override
@@ -283,10 +225,8 @@ abstract class _User implements User {
       required final String name,
       required final String username,
       required final String email,
-      required final Address address,
       required final String phone,
-      required final String website,
-      required final Company company}) = _$_User;
+      required final String website}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -299,13 +239,9 @@ abstract class _User implements User {
   @override
   String get email;
   @override
-  Address get address;
-  @override
   String get phone;
   @override
   String get website;
-  @override
-  Company get company;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
