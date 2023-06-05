@@ -7,6 +7,7 @@ class UsersState with _$UsersState {
   const factory UsersState({
     @Default([]) List<User> users,
     @Default([]) List<User> filteredUsers,
+    @Default([]) List<Post> posts,
     @Default('') String errorMessage,
     @Default(Status.loading) Status status,
   }) = _UsersState;

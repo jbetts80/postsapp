@@ -9,6 +9,7 @@ import 'package:postsapp/core/presentation/widgets/shimmer_list.dart';
 import 'package:postsapp/core/presentation/widgets/text_field.dart';
 import 'package:postsapp/core/presentation/widgets/user_card.dart';
 import 'package:postsapp/features/home/presentation/cubit/users_cubit.dart';
+import 'package:postsapp/features/home/presentation/screens/user_posts_screen.dart';
 
 class UsersScreen extends StatefulWidget {
   const UsersScreen({super.key});
@@ -47,7 +48,7 @@ class _UsersBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 20),
       child: BlocListener<UsersCubit, UsersState>(
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (_, state) {
@@ -88,7 +89,15 @@ class _UsersBody extends StatelessWidget {
                 }
                 return Expanded(
                   child: ListView.separated(
-                    itemBuilder: (_, index) => AppUserCard(user: state.filteredUsers[index], showPost: (_) {}),
+                    itemBuilder: (_, index) {
+                      final user = state.filteredUsers[index];
+                      return AppUserCard(
+                        user: user,
+                        showPost: () {
+                          Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) => UserPostsScreen(user)));
+                        },
+                      );
+                    },
                     itemCount: state.filteredUsers.length,
                     separatorBuilder: (_, __) => vSpace30,
                   ),
