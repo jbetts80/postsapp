@@ -80,7 +80,7 @@ void main() {
       ),
     ];
 
-    setUpAll(() {
+    setUp(() {
       userRepository = MockUserRepository();
       when(() => userRepository.fetchUsers()).thenAnswer((_) async => usersMock);
       when(() => userRepository.fetchUserPosts(2)).thenAnswer((_) async => userPostsMock);
