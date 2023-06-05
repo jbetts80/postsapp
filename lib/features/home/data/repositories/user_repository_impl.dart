@@ -12,8 +12,8 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<List<User>> fetchUsers() async {
     try {
-      final result = await _api.getList(endpoint: 'users') as List;
-      return result.map((user) => User.fromJson(user as Map<String, dynamic>)).toList();
+      final users = await _api.getList(endpoint: 'users') as List;
+      return users.map((user) => User.fromJson(user as Map<String, dynamic>)).toList();
     } catch (_) {
       rethrow;
     }
@@ -22,8 +22,8 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<List<Post>> fetchUserPosts(int userId) async {
     try {
-      final userPosts = await _api.getList(endpoint: 'posts?userId=$userId') as List<Map<String, dynamic>>;
-      return userPosts.map(Post.fromJson).toList();
+      final userPosts = await _api.getList(endpoint: 'posts?userId=$userId') as List;
+      return userPosts.map((post) => Post.fromJson(post as Map<String, dynamic>)).toList();
     } catch (_) {
       rethrow;
     }

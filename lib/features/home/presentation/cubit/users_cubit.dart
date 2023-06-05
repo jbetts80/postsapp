@@ -28,4 +28,13 @@ class UsersCubit extends Cubit<UsersState> {
       emit(state.copyWith(status: Status.error, errorMessage: 'Error when filtering the users'.hardcoded));
     }
   }
+
+  Future<void> fetchUserPosts(int userId) async {
+    try {
+      final posts = await _userRepository.fetchUserPosts(userId);
+      emit(state.copyWith(status: Status.success, posts: posts));
+    } catch (exception) {
+      emit(state.copyWith(status: Status.error, errorMessage: 'Error when fetching the user [$userId] posts'.hardcoded));
+    }
+  }
 }

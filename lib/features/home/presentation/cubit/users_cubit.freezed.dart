@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UsersState {
   List<User> get users => throw _privateConstructorUsedError;
   List<User> get filteredUsers => throw _privateConstructorUsedError;
+  List<Post> get posts => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
 
@@ -35,6 +36,7 @@ abstract class $UsersStateCopyWith<$Res> {
   $Res call(
       {List<User> users,
       List<User> filteredUsers,
+      List<Post> posts,
       String errorMessage,
       Status status});
 }
@@ -54,6 +56,7 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   $Res call({
     Object? users = null,
     Object? filteredUsers = null,
+    Object? posts = null,
     Object? errorMessage = null,
     Object? status = null,
   }) {
@@ -66,6 +69,10 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
           ? _value.filteredUsers
           : filteredUsers // ignore: cast_nullable_to_non_nullable
               as List<User>,
+      posts: null == posts
+          ? _value.posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -89,6 +96,7 @@ abstract class _$$_UsersStateCopyWith<$Res>
   $Res call(
       {List<User> users,
       List<User> filteredUsers,
+      List<Post> posts,
       String errorMessage,
       Status status});
 }
@@ -106,6 +114,7 @@ class __$$_UsersStateCopyWithImpl<$Res>
   $Res call({
     Object? users = null,
     Object? filteredUsers = null,
+    Object? posts = null,
     Object? errorMessage = null,
     Object? status = null,
   }) {
@@ -118,6 +127,10 @@ class __$$_UsersStateCopyWithImpl<$Res>
           ? _value._filteredUsers
           : filteredUsers // ignore: cast_nullable_to_non_nullable
               as List<User>,
+      posts: null == posts
+          ? _value._posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<Post>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -136,10 +149,12 @@ class _$_UsersState implements _UsersState {
   const _$_UsersState(
       {final List<User> users = const [],
       final List<User> filteredUsers = const [],
+      final List<Post> posts = const [],
       this.errorMessage = '',
       this.status = Status.loading})
       : _users = users,
-        _filteredUsers = filteredUsers;
+        _filteredUsers = filteredUsers,
+        _posts = posts;
 
   final List<User> _users;
   @override
@@ -159,6 +174,15 @@ class _$_UsersState implements _UsersState {
     return EqualUnmodifiableListView(_filteredUsers);
   }
 
+  final List<Post> _posts;
+  @override
+  @JsonKey()
+  List<Post> get posts {
+    if (_posts is EqualUnmodifiableListView) return _posts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_posts);
+  }
+
   @override
   @JsonKey()
   final String errorMessage;
@@ -168,7 +192,7 @@ class _$_UsersState implements _UsersState {
 
   @override
   String toString() {
-    return 'UsersState(users: $users, filteredUsers: $filteredUsers, errorMessage: $errorMessage, status: $status)';
+    return 'UsersState(users: $users, filteredUsers: $filteredUsers, posts: $posts, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -179,6 +203,7 @@ class _$_UsersState implements _UsersState {
             const DeepCollectionEquality().equals(other._users, _users) &&
             const DeepCollectionEquality()
                 .equals(other._filteredUsers, _filteredUsers) &&
+            const DeepCollectionEquality().equals(other._posts, _posts) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.status, status) || other.status == status));
@@ -189,6 +214,7 @@ class _$_UsersState implements _UsersState {
       runtimeType,
       const DeepCollectionEquality().hash(_users),
       const DeepCollectionEquality().hash(_filteredUsers),
+      const DeepCollectionEquality().hash(_posts),
       errorMessage,
       status);
 
@@ -203,6 +229,7 @@ abstract class _UsersState implements UsersState {
   const factory _UsersState(
       {final List<User> users,
       final List<User> filteredUsers,
+      final List<Post> posts,
       final String errorMessage,
       final Status status}) = _$_UsersState;
 
@@ -210,6 +237,8 @@ abstract class _UsersState implements UsersState {
   List<User> get users;
   @override
   List<User> get filteredUsers;
+  @override
+  List<Post> get posts;
   @override
   String get errorMessage;
   @override
