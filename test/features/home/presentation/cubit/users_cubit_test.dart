@@ -119,7 +119,7 @@ void main() {
       'When the UsersCubit is created should emit status Status.success',
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUsers();
       },
       expect: () => [
@@ -132,7 +132,7 @@ void main() {
       setUp: () => when(() => userRepository.fetchUsers()).thenThrow(Exception()),
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUsers();
       },
       expect: () => [
@@ -144,7 +144,7 @@ void main() {
       'When filtering users should emit status Status.success',
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUsers();
         cubit.filterUsers('entina');
       },
@@ -159,7 +159,7 @@ void main() {
       setUp: () => when(() => usersCubit.filterUsers('entina')).thenThrow(Exception()),
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUsers();
         cubit.filterUsers('entina');
       },
@@ -173,7 +173,7 @@ void main() {
       'When fetching fetching the user posts should emit status Status.success',
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUserPosts(2);
       },
       expect: () => [
@@ -186,7 +186,7 @@ void main() {
       setUp: () => when(() => userRepository.fetchUserPosts(2)).thenThrow(Exception()),
       build: () => UsersCubit(userRepository),
       act: (cubit) async {
-        await Future.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await cubit.fetchUserPosts(2);
       },
       expect: () => [
