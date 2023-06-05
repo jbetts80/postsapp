@@ -1,6 +1,6 @@
 part of 'users_cubit.dart';
 
-enum Status { loading, success, error }
+enum Status { loading, requestPermission, success, error }
 
 @freezed
 class UsersState with _$UsersState {

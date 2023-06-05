@@ -16,46 +16,16 @@ void main() {
         name: 'Glenna Reichert',
         username: 'Delphine',
         email: 'Chaim_McDermott@dana.io',
-        address: Address(
-          street: 'Dayna Park',
-          suite: 'Suite 449',
-          city: 'Bartholomebury',
-          zipcode: '76495-3109',
-          geo: Geo(
-            lat: '24.6463',
-            lng: '-168.8889',
-          ),
-        ),
         phone: '1-305-457-815',
         website: 'www.catunysas.com',
-        company: Company(
-          name: 'Yost and Sons',
-          catchPhrase: 'Switchable contextually-based project',
-          bs: 'aggregate real-time technologies',
-        ),
       ),
       User(
         id: 2,
         name: 'Clementina DuBuque',
         username: 'Moriah.Stanton',
         email: 'Rey.Padberg@karina.biz',
-        address: Address(
-          street: 'Kattie Turnpike',
-          suite: 'Suite 198',
-          city: 'Lebsackbury',
-          zipcode: '31428-2261',
-          geo: Geo(
-            lat: '-38.2386',
-            lng: '57.2232',
-          ),
-        ),
         phone: '024-648-3804',
         website: 'ambrose.net',
-        company: Company(
-          name: 'Hoeger LLC',
-          catchPhrase: 'Centralized empowering task-force',
-          bs: 'target end-to-end models',
-        ),
       ),
     ];
 

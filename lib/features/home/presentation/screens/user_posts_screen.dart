@@ -19,7 +19,7 @@ class UserPostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UsersCubit(GetIt.I.get())..fetchUserPosts(user.id),
+      create: (context) => UsersCubit(GetIt.I.get(), GetIt.I.get())..fetchUserPosts(user.id),
       child: Scaffold(
         appBar: AppBar(title: Text('Posts'.hardcoded)),
         body: SafeArea(

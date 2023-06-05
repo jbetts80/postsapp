@@ -30,7 +30,7 @@ class _UsersScreenState extends State<UsersScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UsersCubit(GetIt.I.get())..fetchUsers(),
+      create: (context) => UsersCubit(GetIt.I.get(), GetIt.I.get())..fetchUsers(),
       child: Scaffold(
         appBar: AppBar(
           title: Text('Prueba de Ingreso'.hardcoded),
@@ -56,6 +56,22 @@ class _UsersBody extends StatelessWidget {
             case Status.loading:
             case Status.success:
               break;
+            case Status.requestPermission:
+              showDialog<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Permission Denied'),
+                    content: const Text('Please grant storage permission to continue.'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: Navigator.of(context).pop,
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  );
+                },
+              );
             case Status.error:
               SnackBar(
                 content: Text(state.errorMessage, style: AppTextStyle.small.copyWith(color: ColorPalette.white)),
